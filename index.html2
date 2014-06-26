@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <!--link rel="import" href="google-map/index.html"-->
+    <link rel="import" href="bower_components/polymer/polymer.html">
+
+    <link rel="import" href="bower_components/platform/platform.js">
+    <link rel="import" href="bower_components/core-elements/core-elements.html">
+  </head>
+  <body>
+  <!-- Define your custom element -->
+    <polymer-element name="my-element">
+      <template>
+	<span>I'm <b>my-element</b>. Check out my prototype.</span>
+      </template>
+
+    </polymer-element>
+    
+    <!--instansiate my-element-->
+    <my-element></my-element>
+
+  </body>
+</html>

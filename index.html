@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- 1. Load platform.js for polyfill support. -->
+    <script src="bower_components/platform/platform.js"></script>
 
-    <!--link rel="import" href="google-map/index.html"-->
-    <link rel="import" href="bower_components/polymer/polymer.html">
-    <link rel="import" href="bower_components/platform/platform.js">
-
+    <!-- 2. Use an HTML Import to bring in the element. -->
+    <link rel="import"
+          href="bower_components/core-ajax/core-ajax.html">
   </head>
   <body>
-  <!-- Define your custom element -->
-    <polymer-element name="my-element">
-      <template>
-	<span>I'm <b>my-element</b>. Check out my prototype.</span>
-      </template>
+    <!-- 3. Declare the element. Configure using its attributes. -->
+    <core-ajax url="http://example.com/json"
+               handleAs="json"></core-ajax>
 
-    </polymer-element>
-    
-    <!--instansiate my-element-->
-    <my-element></my-element>
+    <script>
+      // Wait for 'polymer-ready'. Ensures the element is upgraded.
+      window.addEventListener('polymer-ready', function(e) {
+        var ajax = document.querySelector('core-ajax');
 
+        // Respond to events it fires.
+        ajax.addEventListener('core-response', function(e) {
+          console.log(this.response);
+        });
+
+        ajax.go(); // Call its API methods.
+      });
+    </script>
   </body>
 </html>
