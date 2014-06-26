@@ -2,16 +2,17 @@
 <html>
   <head>
     <link rel="import" href="elements/my-element.html">
+    <link rel="import" href="platform/platform.js">
     <link rel="import" href="polymer/polymer.js">
-</head>
+  </head>
   <body>
   <!-- Define your custom element -->
-<polymer-element name="my-element">
-  <template>
-    <span>I'm <b>my-element</b>. Check out my prototype.</span>
-  </template>
-    <script>
-        Polymer('my-element', {
+    <polymer-element name="my-element">
+      <template>
+	<span>I'm <b>my-element</b>. Check out my prototype.</span>
+      </template>
+      <script>
+	    Polymer('my-element', {
             // Fires when the "<polymer-element>" has been fully prepared
             ready: function() {},
 
@@ -24,16 +25,17 @@
             // Fires when an attribute was added, removed, or updated
             attributeChanged: function(attr, oldVal, newVal) {}
         });
-    </script>
+      </script>
 
-</polymer-element>
-<!--instansiate my-element-->
-<my-element></my-element>
+    </polymer-element>
+    
+    <!--instansiate my-element-->
+    <my-element></my-element>
 
-<core-field>
-  <core-icon icon="menu" size="48"></core-icon>
-  <label>I'm a label!</label>
-  <input placeholder="I have a label" flex>
-</core-field>    
+    <core-field>
+      <core-icon icon="menu" size="48"></core-icon>
+      <label>I'm a label!</label>
+      <input placeholder="I have a label" flex>
+    </core-field>    
   </body>
 </html>
