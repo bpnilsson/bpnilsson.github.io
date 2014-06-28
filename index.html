@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- 1. Load platform.js for polyfill support. -->
     <script src="bower_components/platform/platform.js"></script>
-
-    <!-- 2. Use an HTML Import to bring in the element. -->
-    <link rel="import"
-          href="bower_components/core-input/core-input.html">
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <link rel="import" href="bower_components/core-input/core-input.html">
+    <!--link rel="import" href="my_components/box/box.html"-->
   </head>
   <body>
-<core-input placeholder="Placeholder text here"></core-input>
 
+<polymer-element name="box">
+  <template>
+   <p>Korv</p>
+    <!--div>
+      <h2 id="tilte">Test box!</h2>
+      <p>Your text: {{text}}</p>
+    </div-->
+  </template>
+</polymer-element>
+    <box></box>
+    <p>Hej</p>
+    <core-input></core-input>
+    <p>Hej</p>
+    
+    <!-- Define element -->
+<polymer-element name="my-counter" attributes="counter">
+  <template>
+    <style> /*...*/ </style>
+    <div id="label"><content></content></div>
+    Value: <span id="counterVal">{{counter}}</span><br>
+    <button on-tap="{{increment}}">Increment</button>
+  </template>
+  <script>
+    Polymer({
+      counter: 0, // Default value
+      counterChanged: function() {
+        this.$.counterVal.classList.add('highlight');
+      },
+      increment: function() {
+        this.counter++;
+      }
+    });
+  </script>
+</polymer-element>
+
+<!-- Use element -->
+<my-counter counter="10">Points</my-counter>
   </body>
 </html>
