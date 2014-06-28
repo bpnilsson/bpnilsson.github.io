@@ -19,7 +19,7 @@ body {
 .reveal {
   font-family: 'Open Sans', sans-serif;
   font-size: 36px;
-  font-weight: normal;
+  font-weight: italic;
   letter-spacing: -0.02em;
   color: black; }
 
@@ -39,7 +39,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: black;
-  font-family: "News Cycle", Impact, sans-serif;
+  font-family: "open sans", sans-serif;
   line-height: 0.9em;
   letter-spacing: 0.02em;
   text-transform: none;
