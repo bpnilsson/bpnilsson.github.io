@@ -14,7 +14,7 @@
  *********************************************/
 body {
   background: white;
-  background-color: white; }
+  background-color: #5A5B6D; }
 
 .reveal {
   font-family: 'Open Sans', sans-serif;
@@ -38,7 +38,7 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: black;
+  color: #080F5E;
   font-family: "open sans", sans-serif;
   line-height: 0.9em;
   font-size: 1.74em;
@@ -148,7 +148,11 @@ font-style: italic;}
 
 section {
   background-color: white;
-  min-height: 60%;
-  min-width: 60%;
+  min-height: 15em;
+  min-width: 80%;
   box-shadow: rgba(0, 0, 0, 1.219608) 0px 16px 28px 0px;
+}
+
+section.stack {
+  min-height: 0;
 }

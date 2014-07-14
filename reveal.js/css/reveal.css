@@ -1150,7 +1150,7 @@ body {
 	opacity: 1 !important;
 	visibility: visible !important;
 	cursor: pointer;
-	background: rgba(0,0,0,0.1);
+	background: rgba(255,255,255,0.5);
 }
 .reveal.overview .slides section .fragment {
 	opacity: 1;
@@ -1164,16 +1164,17 @@ body {
 	cursor: pointer;
 }
 	.reveal.overview .slides section:hover {
-		background: rgba(0,0,0,0.3);
+		background: rgba(255,255,255,0.7);
 	}
 	.reveal.overview .slides section.present {
-		background: rgba(0,0,0,0.3);
+		background: rgba(255,255,255,0.7);
 	}
 .reveal.overview .slides>section.stack {
 	padding: 0;
 	top: 0 !important;
 	background: none;
 	overflow: visible;
+	box-shadow: 0 0 00 rgba(0, 0, 0, 0);
 }
 
 
