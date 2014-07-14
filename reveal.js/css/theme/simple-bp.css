@@ -1,5 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+/*@import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);*/
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700italic,400);
 
 /**
@@ -41,12 +41,18 @@ body {
   color: black;
   font-family: "open sans", sans-serif;
   line-height: 0.9em;
+  font-size: 1.74em;
+  font-weight: 400;
   letter-spacing: 0.02em;
   text-transform: none;
   text-shadow: none; }
 
 .reveal h1 {
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2); }
+.reveal h3 {
+  font-weight: 700;
+  font-size: 1.35em;
+font-style: italic;}
 
 /*********************************************
  * LINKS
@@ -138,3 +144,11 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: darkblue; }
+
+
+section {
+  background-color: white;
+  min-height: 60%;
+  min-width: 60%;
+  box-shadow: rgba(0, 0, 0, 1.219608) 0px 16px 28px 0px;
+}
