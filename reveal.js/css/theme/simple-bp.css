@@ -148,11 +148,26 @@ font-style: italic;}
 
 section {
   background-color: white;
-  min-height: 15em;
-  min-width: 80%;
+  min-height: 16em;
+  min-width: 90%;
   box-shadow: rgba(0, 0, 0, 1.219608) 0px 16px 28px 0px;
 }
 
 section.stack {
   min-height: 0;
+}
+.reveal ul, .reveal ol {
+  margin: 0 0 0 4em;
+  display: block;
+}
+.left-aligned p, .left-aligned li {
+  margin: 0 0 0 4em;
+  display: block;
+  text-align: left;
+}
+
+.reveal .slides>section,
+.reveal .slides>section>section {
+  line-height: 1.45em;
+  padding-top: 65px;
 }

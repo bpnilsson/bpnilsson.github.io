@@ -30,9 +30,9 @@
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
 			}
 		</script>
-		
+
 		<link rel="import" href="../bower_components/paper-shadow/paper-shadow.html">
-		
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -52,46 +52,205 @@
 				<paper-shadow z="3"></paper-shadow>
 					<h2>Certifiable scheduling in mixed-criticality real-time systems</h2>
 					<br><br><br>
-					<h3>Björn Nilsson</h3>
+					<p><u>Björn Nilsson</u> and Jens Theis</p>
 				</section>
 
 				<section>
-					<h2>Content</h2>
+					<h2>Real-time scheduling</h2>
+					<br><br>
 					<ul>
-						<li>Own Criticality Based Priority</li>
-						<li>Time-triggered scheduling</li>
-						<li>Priority Based Erliest Deadline First</li>
+						<li class="fragment">Run several jobs on same system</li>
+						<li class="fragment">When to run each job</li>
+
+					</ul>
+				</section>
+				<section>
+					<h2>Traditional solutions</h2>
+					<br>
+					<ul>
+						<li class="fragment">Fixed priority: Rate monotonic</li>
+						<li class="fragment">Dynamic priority: Earliest Deadline First</li>
+					</ul>
+					<p><br></p>
+					<h3 class="fragment">Problems:</h3>
+					<ul>
+						<li class="fragment">What if load &gt; 100%?</li>
+						<li class="fragment">Which jobs to drop first</li>
 					</ul>
 
 					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+						Priority: only order, not importance
 					</aside>
-					
+				</section>
+				<section>
+					<h2>Mixed criticality</h2>
+					<br>
+					<h3>HI-criticality</h3>
+					<ul>
+						<li class="fragment" data-fragment-index="0">Flight-critical</li>
+						<li class="fragment" data-fragment-index="0">Must always finish in time</li>
+					</ul>
+					<p><br></p>
+					<h3>LO-criticality</h3>
+					<ul>
+						<li class="fragment" data-fragment-index="1">Mission-critical</li>
+						<li class="fragment" data-fragment-index="1">No harm if missed</li>
+						<li class="fragment" data-fragment-index="1">Still wrong to miss</li>
+					</ul>
+					<aside class="notes">
+						HI: Flight control, ABS-brakes
+						LO: Communication, navigation, sensors
+					</aside>
+				</section>
+				<section>
+					<h2>Certification</h2>
+					<p><br></p>
+					<ul>
+						<li>Industry standards</li>
+						<li>Restricts hardware and software choices</li>
+						<li>Pessimistic assumptions</li>
+					</ul>
+					<aside class="notes">
+						Type of memory, type of os
+						Rounding down, for example: a processor at 1.8 MHz might be placed in the 1-2MHz category.
+					</aside>
+
+				</section>
+				<section>
+					<h2>Solutions</h2>
+					<p><br></p>
+					<h3 class="fragment fade-in" data-fragment-index="0">Fixed priority</h3>
+					<ul>
+						<li>Own Criticality Based Priority (OCBP)</li>
+						<li>Time-triggered scheduling (TT)</li>
+						<li class="fragment fade-out" data-fragment-index="0" >Priority Based Erliest Deadline First (CBEDF)</li>
+					</ul>
+					<h3 class="fragment " data-fragment-index="0">Dynamic priority</h3>
+					<ul>
+						<li class="fragment" data-fragment-index="0">Priority Based Erliest Deadline First (CBEDF)</li>
+					</ul>
+
 				</section>
 
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
+						<div class="left-aligned">
 						<h2>Job Model</h2>
-								\[J_i = (\chi_i, A_i, D_i, [C_i(LO), C_i(HI)])\]
+						<h3>Definition</h3>
+						<br>
+						\[J_i = (\chi_i, A_i, D_i, [C_i(LO), C_i(HI)])\]
 						<br>
 						<p class="fragment" data-fragment-index="0">\(\chi_i\): Criticality level (LO or HI)</p>
 						<p class="fragment" data-fragment-index="1">\(A_i\): Release time (absolute)</p>
 						<p class="fragment" data-fragment-index="2">\(D_i\): Deadline</p>
 						<p class="fragment" data-fragment-index="3">\(C_i(\chi)\): WCET (LO and HI)</p>
-						
+						</div>
 					</section>
+
 					<section>
 						<h2>Job Model</h2>
-						<p>Image of job parameters</p>
-					</section>
 
+						<br>
+						<p>[insert image]</p>
+					</section>
 				</section>
 
-
-
+				<section>
+				  <section>
+					<h2>Own Criticality Based Priority</h2>
+					<br><br>
+					<ul>
+						<li>Find candidate for lowest priorty</li>
+						<li>\(C_i(HI)\) of all tasks for HI-criticality jobs</li>
+						<li>\(C_i(LO)\) of all tasks for LO-criticality jobs</li>
+					</ul>
+				  </section>
+				  <section>
+						<h2>Own Criticality Based Priority</h2>
+						<h3>Example</h3>
+						<br>
+						<!--p class="fragment">\[J_1 = (HI, 0, 7, [2, 3])\]</p>
+						<p class="fragment">\[J_2 = (HI, 0, 6, [1, 3])\]</p>
+						<p class="fragment">\[J_3 = (LO, 2, 6, [2, 2])\]</p-->
+						<p>[Insert example]</p>
+				  </section>
+				  <section>
+					<h2>Own Criticality Based Priority</h2>
+					<br>
+					<ul>
+						<li>Simple approach</li>
+						<li>Fixed priority</li>
+						<li>Runs highest priority ready job</li>
+					</ul>
+				  </section>
+				</section>
 
 				<section>
+				  <section>
+					<h2>Time-Triggered scheduler</h2>
+					<br><br>
+					<ul>
+						<li>Use OCBP for priorities</li>
+						<li>Simulate behaviour and assume WCET</li>
+						<li>Create two time-tables (LO- and HI-crit.)</li>
+
+					</ul>
+				  </section>
+				  <section>
+						<h2>Time-Triggered scheduler</h2>
+						<br><br>
+						<ul>
+							<li>Strictly follow time-tables at run-time</li>
+							<li>Use LO-crit. table as long as jobs finish in time</li>
+							<li>Switching to HI-crit. gives HI-crit. jobs more time</li>
+						<!--p class="fragment">\[J_1 = (HI, 0, 7, [2, 3])\]</p>
+						<p class="fragment">\[J_2 = (HI, 0, 6, [1, 3])\]</p>
+						<p class="fragment">\[J_3 = (LO, 2, 6, [2, 2])\]</p-->
+				  </section>
+				  <section>
+					<h2>Time-Triggered scheduler</h2>
+					<br><br>
+					<ul>
+						<li>Almost no over-head</li>
+						<li>Very non-flexible</li>
+						<li>Easily described and certifiable</li>
+					</ul>
+				  </section>
+				</section>
+
+				<section>
+					<section>
+					<h2>Criticality Based EDF</h2>
+					<h3>Empty slack</h3>
+					<ul>
+						<li class="fragment" data-fragment-index="0">If a job can be delayed, it has slack</li>
+						<li class="fragment" data-fragment-index="0">Calculated off-line</li>
+					</ul>
+					<p><br></p>
+					<h3>Remaining slack</h3>
+					<ul>
+						<li class="fragment" data-fragment-index="1">If a job finishes early, it leaves slack</li>
+						<li class="fragment" data-fragment-index="1">run-time</li>
+					</ul>
+					<br>
+					<p class="fragment">The slack can be used by other tasks</p>
+					</section>
+					<section>
+						<h2>Criticality Based EDF</h2>
+						<h3>Slack</h3>
+						<img width="724" height="340" src="img/slack.png">
+					</section>
+					<section>
+					<h2>Criticality Based EDF</h2>
+					<br>
+					<ul>
+						<li>If there is slack: Run LO-crit. job</li>
+						<li>Else: HI-crit. job must be run </li>
+					</ul>
+					</section>
+				</section>
+				<!--section>
 					<section id="fragments">
 						<h2>Fragmented Views</h2>
 						<p>Hit the next arrow...</p>
@@ -119,17 +278,11 @@
 						<p class="fragment current-visible">current-visible</p>
 						<p class="fragment highlight-current-blue">highlight-current-blue</p>
 					</section>
-				</section>
-
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
+				</section-->
 
 
-				<section>
+
+				<!--section>
 					<h2>Take a Moment</h2>
 					<p>
 						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
@@ -149,7 +302,7 @@
 				<section>
 					<h1>THE END</h1>
 					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section>
+				</section-->
 
 			</div>
 
@@ -169,7 +322,7 @@
 				center: true,
 
 				theme: Reveal.getQueryHash().theme || 'simple-bp', // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
 
 				math: {
 					// mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
