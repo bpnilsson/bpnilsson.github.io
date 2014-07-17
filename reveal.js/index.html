@@ -59,9 +59,8 @@
 					<h2>Real-time scheduling</h2>
 					<br><br>
 					<ul>
-						<li class="fragment">Run several jobs on same system</li>
-						<li class="fragment">When to run each job</li>
-
+						<li>How to run several jobs on same system</li>
+						<li>Different deadlines and execution times</li>
 					</ul>
 				</section>
 				<section>
@@ -142,9 +141,9 @@
 						\[J_i = (\chi_i, A_i, D_i, [C_i(LO), C_i(HI)])\]
 						<br>
 						<p class="fragment" data-fragment-index="0">\(\chi_i\): Criticality level (LO or HI)</p>
-						<p class="fragment" data-fragment-index="1">\(A_i\): Release time (absolute)</p>
-						<p class="fragment" data-fragment-index="2">\(D_i\): Deadline</p>
-						<p class="fragment" data-fragment-index="3">\(C_i(\chi)\): WCET (LO and HI)</p>
+						<p class="fragment" data-fragment-index="1">\(A_i\): Release time</p>
+						<p class="fragment" data-fragment-index="1">\(D_i\): Deadline</p>
+						<p class="fragment" data-fragment-index="2">\(C_i(\chi)\): WCET (LO and HI)</p>
 						</div>
 					</section>
 
@@ -152,36 +151,42 @@
 						<h2>Job Model</h2>
 
 						<br>
-						<p>[insert image]</p>
+						<img src="img/job.png">
 					</section>
 				</section>
 
 				<section>
 				  <section>
 					<h2>Own Criticality Based Priority</h2>
-					<br><br>
+					<p>Baruah, Li and Stougie [2]</p>
+					<br>
 					<ul>
-						<li>Find candidate for lowest priorty</li>
-						<li>\(C_i(HI)\) of all tasks for HI-criticality jobs</li>
-						<li>\(C_i(LO)\) of all tasks for LO-criticality jobs</li>
+						<li class="fragment">Find candidate for lowest priorty</li>
+						<li class="fragment">HI-criticality job: \(C_i(HI)\) of HI-crit. jobs</li>
+						<li class="fragment">LO-criticality job: \(C_i(LO)\) of all jobs</li>
 					</ul>
+					<br><br>
+					<p class="fragment">Run the job with highest priority</p>
 				  </section>
 				  <section>
 						<h2>Own Criticality Based Priority</h2>
 						<h3>Example</h3>
 						<br>
-						<!--p class="fragment">\[J_1 = (HI, 0, 7, [2, 3])\]</p>
-						<p class="fragment">\[J_2 = (HI, 0, 6, [1, 3])\]</p>
-						<p class="fragment">\[J_3 = (LO, 2, 6, [2, 2])\]</p-->
-						<p>[Insert example]</p>
+						\[\left\{	\begin{aligned} J_1 &= (HI, 0, 3, [2, 3]) \\ J_2 &= (LO, 0, 3, [1, 1])	\end{aligned}  \right.\]
+						<!--p class="fragment">\[J_1 = (HI, 0, 7, [2, 3])\]</p-->
+						<br>
+						<p class="fragment">\(J_1: 3 -1 = 2 < 3\) <span class="fragment" style="color:red;">NO</span></p>
+						<p class="fragment">\(J_2: 3 -2 = 1 \geq 1\) <span class="fragment" style="color:green;">OK</span></p>
+						<p class="fragment">\(J_1 \rhd J_2\)</p>
+
 				  </section>
 				  <section>
 					<h2>Own Criticality Based Priority</h2>
-					<br>
+					<br><br>
 					<ul>
 						<li>Simple approach</li>
-						<li>Fixed priority</li>
-						<li>Runs highest priority ready job</li>
+						<li>Fixed priority - predictable behaviour</li>
+						<li>Relatively low overhead</li>
 					</ul>
 				  </section>
 				</section>
@@ -204,18 +209,28 @@
 							<li>Strictly follow time-tables at run-time</li>
 							<li>Use LO-crit. table as long as jobs finish in time</li>
 							<li>Switching to HI-crit. gives HI-crit. jobs more time</li>
-						<!--p class="fragment">\[J_1 = (HI, 0, 7, [2, 3])\]</p>
-						<p class="fragment">\[J_2 = (HI, 0, 6, [1, 3])\]</p>
-						<p class="fragment">\[J_3 = (LO, 2, 6, [2, 2])\]</p-->
+				  </section>
+				  <section>
+						<h2>Time-Triggered scheduler</h2>
+						<h3>Time tables</h3>
+						<img src="img/tt-table.png">
 				  </section>
 				  <section>
 					<h2>Time-Triggered scheduler</h2>
 					<br><br>
 					<ul>
 						<li>Almost no over-head</li>
-						<li>Very non-flexible</li>
+						<li>Not very flexible</li>
 						<li>Easily described and certifiable</li>
 					</ul>
+				  </section>
+				  <section>
+						<h2>Time-Triggered scheduler</h2>
+						<img src="img/tt.png">
+				  </section>
+				  <section>
+						<h2>Time-Triggered scheduler</h2>
+						<img src="img/tt2.png">
 				  </section>
 				</section>
 
@@ -231,7 +246,7 @@
 					<h3>Remaining slack</h3>
 					<ul>
 						<li class="fragment" data-fragment-index="1">If a job finishes early, it leaves slack</li>
-						<li class="fragment" data-fragment-index="1">run-time</li>
+						<li class="fragment" data-fragment-index="1">Calculated at run-time</li>
 					</ul>
 					<br>
 					<p class="fragment">The slack can be used by other tasks</p>
