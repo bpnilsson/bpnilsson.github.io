@@ -44,323 +44,359 @@
 /*setTimeout(function(){
    window.location.reload(1);
 }, 15000);*/</script>
-		<div class="reveal">
+	<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-				<paper-shadow z="3"></paper-shadow>
-					<h2>Certifiable scheduling in mixed-criticality real-time systems</h2>
-					<br><br><br>
-					<p><u>Björn Nilsson</u> and Jens Theis</p>
-				</section>
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+			<paper-shadow z="3"></paper-shadow>
+				<h2>Certifiable scheduling in &nbsp; mixed-criticality real-time systems</h2>
+				<br><br><br>
+				<p><u>Björn Nilsson</u> and Jens Theis</p>
+			</section>
 
+			<section>
+				<h2>Real-time scheduling</h2>
+				<br><br>
+				<ul>
+					<li>How to run several jobs on same system</li>
+					<li>Different deadlines and execution times</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Traditional solutions</h2>
+				<br><br>
+				<ul>
+					<li class="fragment">Rate monotonic</li>
+					<li class="fragment">Earliest Deadline First</li>
+				</ul>
+				<br>
+				<h3 class="fragment">Problems:</h3>
+				<ul>
+					<li class="fragment">What if load &gt; 100%?</li>
+					<li class="fragment">Which jobs to drop first</li>
+				</ul>
+
+				<aside class="notes">
+					Priority: only order, not importance
+				</aside>
+			</section>
+			<section>
+				<h2>Mixed criticality</h2>
+				<br>
+				<h3>HI-criticality</h3>
+				<ul>
+					<li class="fragment" data-fragment-index="0">Flight-critical</li>
+					<li class="fragment" data-fragment-index="0">Must always finish in time</li>
+				</ul>
+				<br>
+				<h3>LO-criticality</h3>
+				<ul>
+					<li class="fragment" data-fragment-index="1">Mission-critical</li>
+					<li class="fragment" data-fragment-index="1">No harm if missed</li>
+					<li class="fragment" data-fragment-index="1">Still wrong to miss</li>
+				</ul>
+				<aside class="notes">
+					HI: Flight control, ABS-brakes
+					LO: Communication, navigation, sensors
+				</aside>
+			</section>
+			<section>
+				<h2>Certification</h2>
+				<br><br>
+				<ul>
+					<li>Industry standards</li>
+					<li>Restricts hardware and software choices</li>
+					<li>Pessimistic assumptions</li>
+				</ul>
+				<aside class="notes">
+					Type of memory, type of os
+					Rounding down, for example: a processor at 1.8 MHz might be placed in the 1-2MHz category.
+				</aside>
+
+			</section>
+			<section>
+				<h2>Solutions</h2>
+				<br>
+				<h3 class="fragment fade-in" data-fragment-index="0">Fixed priority</h3>
+				<ul>
+					<li>Own Criticality Based Priority (OCBP)</li>
+					<li>Time-triggered scheduling (TT)</li>
+					<li class="fragment fade-out" data-fragment-index="0" >Priority Based Erliest Deadline First (CBEDF)</li>
+				</ul>
+				<h3 class="fragment " data-fragment-index="0">Dynamic priority</h3>
+				<ul>
+					<li class="fragment" data-fragment-index="0">Priority Based Erliest Deadline First (CBEDF)</li>
+				</ul>
+
+			</section>
+
+			<!-- Example of nested vertical slides -->
+			<section>
 				<section>
-					<h2>Real-time scheduling</h2>
-					<br><br>
-					<ul>
-						<li>How to run several jobs on same system</li>
-						<li>Different deadlines and execution times</li>
-					</ul>
-				</section>
-				<section>
-					<h2>Traditional solutions</h2>
+					<div class="left-aligned">
+					<h2>Job Model</h2>
+					<h3>Definition</h3>
 					<br>
-					<ul>
-						<li class="fragment">Fixed priority: Rate monotonic</li>
-						<li class="fragment">Dynamic priority: Earliest Deadline First</li>
-					</ul>
-					<p><br></p>
-					<h3 class="fragment">Problems:</h3>
-					<ul>
-						<li class="fragment">What if load &gt; 100%?</li>
-						<li class="fragment">Which jobs to drop first</li>
-					</ul>
-
-					<aside class="notes">
-						Priority: only order, not importance
-					</aside>
-				</section>
-				<section>
-					<h2>Mixed criticality</h2>
+					\[J_i = (\chi_i, A_i, D_i, [C_i(LO), C_i(HI)])\]
 					<br>
-					<h3>HI-criticality</h3>
-					<ul>
-						<li class="fragment" data-fragment-index="0">Flight-critical</li>
-						<li class="fragment" data-fragment-index="0">Must always finish in time</li>
-					</ul>
-					<p><br></p>
-					<h3>LO-criticality</h3>
-					<ul>
-						<li class="fragment" data-fragment-index="1">Mission-critical</li>
-						<li class="fragment" data-fragment-index="1">No harm if missed</li>
-						<li class="fragment" data-fragment-index="1">Still wrong to miss</li>
-					</ul>
-					<aside class="notes">
-						HI: Flight control, ABS-brakes
-						LO: Communication, navigation, sensors
-					</aside>
-				</section>
-				<section>
-					<h2>Certification</h2>
-					<p><br></p>
-					<ul>
-						<li>Industry standards</li>
-						<li>Restricts hardware and software choices</li>
-						<li>Pessimistic assumptions</li>
-					</ul>
-					<aside class="notes">
-						Type of memory, type of os
-						Rounding down, for example: a processor at 1.8 MHz might be placed in the 1-2MHz category.
-					</aside>
-
-				</section>
-				<section>
-					<h2>Solutions</h2>
-					<p><br></p>
-					<h3 class="fragment fade-in" data-fragment-index="0">Fixed priority</h3>
-					<ul>
-						<li>Own Criticality Based Priority (OCBP)</li>
-						<li>Time-triggered scheduling (TT)</li>
-						<li class="fragment fade-out" data-fragment-index="0" >Priority Based Erliest Deadline First (CBEDF)</li>
-					</ul>
-					<h3 class="fragment " data-fragment-index="0">Dynamic priority</h3>
-					<ul>
-						<li class="fragment" data-fragment-index="0">Priority Based Erliest Deadline First (CBEDF)</li>
-					</ul>
-
-				</section>
-
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<div class="left-aligned">
-						<h2>Job Model</h2>
-						<h3>Definition</h3>
-						<br>
-						\[J_i = (\chi_i, A_i, D_i, [C_i(LO), C_i(HI)])\]
-						<br>
-						<p class="fragment" data-fragment-index="0">\(\chi_i\): Criticality level (LO or HI)</p>
-						<p class="fragment" data-fragment-index="1">\(A_i\): Release time</p>
-						<p class="fragment" data-fragment-index="1">\(D_i\): Deadline</p>
-						<p class="fragment" data-fragment-index="2">\(C_i(\chi)\): WCET (LO and HI)</p>
-						</div>
-					</section>
-
-					<section>
-						<h2>Job Model</h2>
-
-						<br>
-						<img src="img/job.png">
-					</section>
+					<p class="fragment" data-fragment-index="0">\(\chi_i\): Criticality level (LO or HI)</p>
+					<p class="fragment" data-fragment-index="1">\(A_i\): Release time</p>
+					<p class="fragment" data-fragment-index="1">\(D_i\): Deadline</p>
+					<p class="fragment" data-fragment-index="2">\(C_i(\chi)\): WCET (LO and HI)</p>
+					</div>
 				</section>
 
 				<section>
-				  <section>
+					<h2>Job Model</h2>
+
+					<br>
+					<img src="img/job.png">
+				</section>
+			</section>
+
+			<section>
+			  <section>
+				<h2>Own Criticality Based Priority</h2>
+				<p>Baruah, Li and Stougie [2]</p>
+				<br>
+				<ul>
+					<li>Find candidate for lowest priorty</li>
+					<li>HI-criticality job: \(C_i(HI)\) of HI-crit. jobs</li>
+					<li>LO-criticality job: \(C_i(LO)\) of all jobs</li>
+				</ul>
+				<br><br>
+				<p class="fragment">Run the job with highest priority</p>
+			  </section>
+			  <section>
 					<h2>Own Criticality Based Priority</h2>
-					<p>Baruah, Li and Stougie [2]</p>
+					<h3>Example</h3>
 					<br>
-					<ul>
-						<li class="fragment">Find candidate for lowest priorty</li>
-						<li class="fragment">HI-criticality job: \(C_i(HI)\) of HI-crit. jobs</li>
-						<li class="fragment">LO-criticality job: \(C_i(LO)\) of all jobs</li>
-					</ul>
-					<br><br>
-					<p class="fragment">Run the job with highest priority</p>
-				  </section>
-				  <section>
-						<h2>Own Criticality Based Priority</h2>
-						<h3>Example</h3>
-						<br>
-						\[\left\{	\begin{aligned} J_1 &= (HI, 0, 3, [2, 3]) \\ J_2 &= (LO, 0, 3, [1, 1])	\end{aligned}  \right.\]
-						<!--p class="fragment">\[J_1 = (HI, 0, 7, [2, 3])\]</p-->
-						<br>
-						<p class="fragment">\(J_1: 3 -1 = 2 < 3\) <span class="fragment" style="color:red;">NO</span></p>
-						<p class="fragment">\(J_2: 3 -2 = 1 \geq 1\) <span class="fragment" style="color:green;">OK</span></p>
-						<p class="fragment">\(J_1 \rhd J_2\)</p>
+					\[\left\{	\begin{aligned} J_1 &= (HI, 0, 3, [2, 3]) \\ J_2 &= (LO, 0, 3, [1, 1])	\end{aligned}  \right.\]
+					<!--p class="fragment">\[J_1 = (HI, 0, 7, [2, 3])\]</p-->
+					<br>
+					<p class="fragment">\(J_1: 3 -1 = 2 &lt; 3\) <span class="fragment" style="color:red;">NO</span></p>
+					<p class="fragment">\(J_2: 3 -2 = 1 \geq 1\) <span class="fragment" style="color:green;">OK</span></p>
+					<p class="fragment">\(J_1 \rhd J_2\)</p>
 
-				  </section>
-				  <section>
-					<h2>Own Criticality Based Priority</h2>
-					<br><br>
-					<ul>
-						<li>Simple approach</li>
-						<li>Fixed priority - predictable behaviour</li>
-						<li>Relatively low overhead</li>
-					</ul>
-				  </section>
-				</section>
+			  </section>
+			  <section>
+				<h2>Own Criticality Based Priority</h2>
+				<br><br>
+				<ul>
+					<li>Simple approach</li>
+					<li>Fixed priority - predictable behaviour</li>
+					<li>Relatively low overhead</li>
+				</ul>
+			  </section>
+			</section>
 
-				<section>
-				  <section>
+			<section>
+				<h2>Solutions</h2>
+				<p><br></p>
+				<h3>Fixed priority</h3>
+				<ul>
+					<li style="color: rgb(224, 190, 190);">Own Criticality Based Priority (OCBP)</li>
+					<li>Time-triggered scheduling (TT)</li>
+				</ul>
+				<h3>Dynamic priority</h3>
+				<ul>
+					<li>Priority Based Erliest Deadline First (CBEDF)</li>
+				</ul>
+			</section>
+
+			<section>
+			  <section>
+				<h2>Time-Triggered scheduler</h2>
+				<p>Baruah and Fohler [1]</p>
+				<br>
+				<ul>
+					<li>Use OCBP for priorities</li>
+					<li>Simulate behaviour and assume WCET</li>
+					<li>Create two time-tables (LO- and HI-crit.)</li>
+
+				</ul>
+			  </section>
+			  <section>
 					<h2>Time-Triggered scheduler</h2>
 					<br><br>
 					<ul>
-						<li>Use OCBP for priorities</li>
-						<li>Simulate behaviour and assume WCET</li>
-						<li>Create two time-tables (LO- and HI-crit.)</li>
-
-					</ul>
-				  </section>
-				  <section>
-						<h2>Time-Triggered scheduler</h2>
-						<br><br>
-						<ul>
-							<li>Strictly follow time-tables at run-time</li>
-							<li>Use LO-crit. table as long as jobs finish in time</li>
-							<li>Switching to HI-crit. gives HI-crit. jobs more time</li>
-				  </section>
-				  <section>
-						<h2>Time-Triggered scheduler</h2>
-						<h3>Time tables</h3>
-						<img src="img/tt-table.png">
-				  </section>
-				  <section>
+						<li>Strictly follow time-tables at run-time</li>
+						<li>Use LO-crit. table as long as jobs finish in time</li>
+						<li>Switching to HI-crit. gives HI-crit. jobs more time</li>
+			  </section>
+			  <section>
 					<h2>Time-Triggered scheduler</h2>
-					<br><br>
-					<ul>
-						<li>Almost no over-head</li>
-						<li>Not very flexible</li>
-						<li>Easily described and certifiable</li>
-					</ul>
-				  </section>
-				  <section>
-						<h2>Time-Triggered scheduler</h2>
-						<img src="img/tt.png">
-				  </section>
-				  <section>
-						<h2>Time-Triggered scheduler</h2>
-						<img src="img/tt2.png">
-				  </section>
-				</section>
+					<h3>Time tables</h3>
+					<img src="img/tt-table.png">
+			  </section>
+			  <section>
+				<h2>Time-Triggered scheduler</h2>
+				<br><br>
+				<ul>
+					<li>Almost no over-head</li>
+					<li>Not very flexible</li>
+					<li>Easily described and certifiable</li>
+				</ul>
+			  </section>
+			  <section>
+					<h2>Time-Triggered scheduler</h2>
+					<img src="img/tt.png">
+			  </section>
+			  <section>
+					<h2>Time-Triggered scheduler</h2>
+					<img src="img/tt2.png">
+			  </section>
+			</section>
 
+			<section>
+				<h2>Solutions</h2>
+				<p><br></p>
+				<h3>Fixed priority</h3>
+				<ul>
+					<li style="color: rgb(224, 190, 190);">Own Criticality Based Priority (OCBP)</li>
+					<li style="color: rgb(224, 190, 190);">Time-triggered scheduling (TT)</li>
+				</ul>
+				<h3>Dynamic priority</h3>
+				<ul>
+					<li>Priority Based Erliest Deadline First (CBEDF)</li>
+				</ul>
+			</section>
+
+			<section>
 				<section>
-					<section>
+				<h2>Criticality Based EDF</h2>
+				<p>Park and Kim [3]</p>
+				<br>
+				<ul>
+					<li>Based on traditional EDF</li>
+					<li>Uses slack time to schedule LO-crit. jobs</li>
+				</ul>
+				</section>
+				<section>
+				<h2>Criticality Based EDF</h2>
+				<h3>Empty slack</h3>
+				<ul>
+					<li class="fragment" data-fragment-index="0">If a job can be delayed, it has slack</li>
+					<li class="fragment" data-fragment-index="0">Calculated off-line</li>
+				</ul>
+				<p><br></p>
+				<h3>Remaining slack</h3>
+				<ul>
+					<li class="fragment" data-fragment-index="1">If a job finishes early, it leaves slack</li>
+					<li class="fragment" data-fragment-index="1">Calculated at run-time</li>
+				</ul>
+				<br>
+				<p class="fragment">The slack can be used by other tasks</p>
+				</section>
+				<section>
 					<h2>Criticality Based EDF</h2>
-					<h3>Empty slack</h3>
-					<ul>
-						<li class="fragment" data-fragment-index="0">If a job can be delayed, it has slack</li>
-						<li class="fragment" data-fragment-index="0">Calculated off-line</li>
-					</ul>
-					<p><br></p>
-					<h3>Remaining slack</h3>
-					<ul>
-						<li class="fragment" data-fragment-index="1">If a job finishes early, it leaves slack</li>
-						<li class="fragment" data-fragment-index="1">Calculated at run-time</li>
-					</ul>
-					<br>
-					<p class="fragment">The slack can be used by other tasks</p>
-					</section>
-					<section>
-						<h2>Criticality Based EDF</h2>
-						<h3>Slack</h3>
-						<img width="724" height="340" src="img/slack.png">
-					</section>
-					<section>
-					<h2>Criticality Based EDF</h2>
-					<br>
-					<ul>
-						<li>If there is slack: Run LO-crit. job</li>
-						<li>Else: HI-crit. job must be run </li>
-					</ul>
-					</section>
+					<h3>Slack</h3>
+					<img width="724" height="340" src="img/slack.png">
 				</section>
-				<!--section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
-					</section>
-				</section-->
-
-
-
-				<!--section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
 				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
+				<h2>Criticality Based EDF</h2>
+				<br><br>
+				<ul>
+					<li>Follows EDF for HI-crit. jobs</li>
+					<li>If there is slack: Run LO-crit. job</li>
+					<li>Else: HI-crit. job must be run </li>
+				</ul>
 				</section>
-
 				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section-->
-
-			</div>
-
+				<h2>Criticality Based EDF</h2>
+				<br><br>
+				<ul>
+					<li>Flexible</li>
+					<li>Utilizes slack time well</li>
+					<li>Non-deterministic</li>
+				</ul>
+				</section>
+			</section>
+			<section>
+			  <section>
+				<h2>Conclusions</h2>
+				<h3>OCBP</h3>
+				<br>
+				<ul>
+					<li>Runs all jobs, but might run LO-crit. jobs too late</li>
+					<li>Low overhead</li>
+					<li>Relatively easy to guarantee correct behaviour</li>
+					<li>Basic approach used in extensions</li>
+				</ul>
+			  </section>
+			  <section>
+				<h2>Conclusions</h2>
+				<h3>Time-triggered schedule</h3>
+				<br>
+				<ul>
+					<li>Deterministic</li>
+					<li>Very low overhead</li>
+					<li>Lower utilization</li>
+					<li>Drops the same LO-crit. job every cycle</li>
+				</ul>
+			  </section>
+			  <section>
+				<h2>Conclusions</h2>
+				<h3>Criticality Based EDF</h3>
+				<br>
+				<ul>
+					<li>Flexible</li>
+					<li>Allows for more utilization</li>
+					<li>Complex behaviour - Difficult to certify</li>
+				</ul>
+			  </section>
+			  <section>
+				<h2>Conclusions</h2>
+				<br><br>
+				<ul>
+					<li>They all drop LO-crit. jobs in different ways</li>
+					<li>Balance between determinism and flexibility</li>
+				</ul>
+			  </section>
+			</section>
 		</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+	</div>
 
-		<script>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.min.js"></script>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+	<script>
 
-				theme: Reveal.getQueryHash().theme || 'simple-bp', // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+		// Full list of configuration options available here:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
 
-				math: {
-					// mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
-					config: 'TeX-AMS_HTML-full'
-				},
+			theme: Reveal.getQueryHash().theme || 'simple-bp', // available themes are in /css/theme
+			transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
 
-				// Parallax scrolling
-				//parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				//parallaxBackgroundSize: '2100px 900px',
+			math: {
+				// mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+				config: 'TeX-AMS_HTML-full'
+			},
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/math/math.js', async: true }
-				]
-			});
+			// Parallax scrolling
+			//parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+			//parallaxBackgroundSize: '2100px 900px',
 
-		</script>
+			// Optional libraries used to extend on reveal.js
+			dependencies: [
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+				{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+				{ src: 'plugin/math/math.js', async: true }
+			]
+		});
+
+	</script>
 
 	</body>
 </html>
